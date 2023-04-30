@@ -9,6 +9,7 @@ import React from 'react';
 const _ = require('lodash');
 const socket = io('http://localhost:3001')
 import { setUsername } from '../redux/features/UserSlice'
+import cursorImage from '../public/cursor.png'
 
 interface screenPageProps { }
 
@@ -99,9 +100,9 @@ const ScreenPage: FC<screenPageProps> = ({ }) => {
         <div className='w-screen h-screen bg-white flex justify-center items-center'>
             {console.log("username", userSlice.username)}
             {_.isEmpty(userSlice.username) && (
-                <div className="flex flex-col space-y-2">
-                    <label className="text-lg font-medium text-gray-700">
-                        Please enter your username:
+                <div className="flex flex-col space-y-4 w-8/12 h-2/6 bg-gradient-to-br from-pink-500 to-purple-500 flex justify-center items-center border-2 border-gray-400 rounded-lg">
+                    <label className="text-lg flex justify-between font-medium text-gray-700 space-x-4">
+                        Please enter your user name:
                         <input
                             type="text"
                             className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -112,7 +113,7 @@ const ScreenPage: FC<screenPageProps> = ({ }) => {
                         className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         onClick={handleUsernameOnClick}
                     >
-                        enter
+                        Enter
                     </button>
                 </div>
 
@@ -133,7 +134,8 @@ const ScreenPage: FC<screenPageProps> = ({ }) => {
                                 style={{ position: 'absolute', left: cursor.position.x, top: cursor.position.y, cursor: 'pointer' }}
                             >
                                 <span role='img' aria-label='cursor' style={{ color: '#000' }}>
-                                    ✏️
+                                    <img src="https://firebasestorage.googleapis.com/v0/b/bookstore-81666.appspot.com/o/cursor.png?alt=media&amp;token=3a707bb5-3f72-4050-9764-aec1c24da47d" alt="cursor" className="w-10 h-10" />
+
                                     <h3>{cursor.position.username}</h3>
                                 </span>
                             </div>
