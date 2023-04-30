@@ -15,12 +15,15 @@ type Point = { x: number; y: number }
 type drawCursor = {
   currentPoint: Point
   cursorId: string
+  username: string
 }
 
 interface Cursor {
   x: number
   y: number
+  username: string
 }
+
 
 interface Cursors {
   [key: string]: Cursor
@@ -40,9 +43,9 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('canvas-state-from-server', state)
   })
 
-  socket.on('draw-cursor', ({ currentPoint }: drawCursor) => {
-    cursors[cursorId] = { x: currentPoint.x, y: currentPoint.y }
-    socket.broadcast.emit('draw-cursor', { currentPoint, cursorId })
+  socket.on('draw-cursor', ({ currentPoint, username }: drawCursor) => {
+    cursors[cursorId] = { x: currentPoint.x, y: currentPoint.y, username }
+    socket.broadcast.emit('draw-cursor', { currentPoint, cursorId, username })
   })
 
   socket.on('clear', () => {

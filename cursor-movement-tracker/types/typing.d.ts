@@ -1,13 +1,12 @@
-type Draw = {
+export type Draw = {
   ctx: CanvasRenderingContext2D
   currentPoint: Point
-  // prevPoint: Point | null
 }
 
-type Cursor = {
+export type Cursor = {
   ctx: CanvasRenderingContext2D
   currentPoint: Point
   color: string
 }
 
-type Point = { x: number; y: number }
+export type Point = { x: number; y: number; username: string }

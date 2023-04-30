@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Draw } from '@/types/typing'
 
 export const useDraw = (onDraw: ({ ctx, currentPoint }: Draw) => void) => {
   console.log(onDraw)
